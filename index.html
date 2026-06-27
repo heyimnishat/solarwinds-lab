@@ -163,4 +163,662 @@
         <!-- PORTFOLIO SHARING GUIDE -->
         <div class="glass-panel rounded-2xl border border-slate-800 p-6 shadow-xl">
           <h2 class="text-sm font-extrabold text-blue-400 uppercase tracking-widest mb-2 flex items-center gap-2">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13.828 10.172a4 4 0
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path></svg>
+            Sharing Your Live Portfolio
+          </h2>
+          <p class="text-slate-400 text-xs leading-relaxed mb-4">
+            Host this dashboard live for recruiters! Push this <code class="text-blue-300 font-mono">index.html</code> code into a free repository on GitHub and enable <strong>GitHub Pages</strong> to showcase your real-world cloud networking skill set.
+          </p>
+          <div class="text-[11px] font-mono text-emerald-400 bg-slate-950 p-2.5 rounded-lg border border-slate-800/80 text-center select-all">
+            https://heyimnishat.github.io/solarwinds-lab
+          </div>
+        </div>
+
+      </div>
+
+      <!-- RIGHT SIDE: INTERACTIVE MAP & CODE VIEWER (8 COLS) -->
+      <div class="lg:col-span-8 flex flex-col gap-8">
+        
+        <!-- VISUAL AWS ARCHITECTURE MAP CARD -->
+        <div class="glass-panel rounded-3xl border border-slate-800 p-6 shadow-2xl relative">
+          
+          <!-- Interactive Status Bar -->
+          <div class="flex items-center justify-between mb-4 bg-slate-950/80 px-4 py-2 rounded-xl border border-slate-800/60">
+            <div class="flex items-center gap-2">
+              <span id="active-phase-indicator" class="w-2.5 h-2.5 rounded-full bg-indigo-500"></span>
+              <span id="active-phase-title" class="text-xs font-extrabold text-slate-300 uppercase font-mono">Phase 1: Foundational Directory Tier</span>
+            </div>
+            <span class="text-[10px] text-slate-500 font-bold font-mono">LIVE TOPOLOGY VIEW</span>
+          </div>
+
+          <!-- Dynamic SVG Map Container -->
+          <div class="bg-[#0e1420] rounded-2xl border border-slate-800/80 p-1 overflow-x-auto">
+            <div class="min-w-[700px] w-full">
+              <svg id="aws-map" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 520" class="w-full h-auto">
+                
+                <defs>
+                  <filter id="nodeShadow" x="-10%" y="-10%" width="120%" height="120%">
+                    <feDropShadow dx="0" dy="6" stdDeviation="4" flood-color="#000000" flood-opacity="0.6" />
+                  </filter>
+                </defs>
+
+                <!-- AWS REGION OUTER BOUNDS -->
+                <rect x="20" y="20" width="960" height="480" rx="16" fill="none" stroke="#334155" stroke-dasharray="4 4" stroke-width="1.5" />
+                <text x="40" y="42" fill="#94A3B8" font-size="10" font-weight="800" font-family="monospace">AWS REGION: ap-south-2 (Hyderabad)</text>
+
+                <!-- VPC BOUNDARY -->
+                <rect x="35" y="60" width="930" height="420" rx="12" fill="none" stroke="#FF9900" stroke-width="2" />
+                <text x="50" y="78" fill="#FF9900" font-size="11" font-weight="800">VPC: C-VPC For SW HA LAB (10.0.0.0/16)</text>
+
+                <!-- INTERNET GATEWAY -->
+                <g transform="translate(500, 48)">
+                  <circle cx="0" cy="0" r="14" fill="#9333EA" />
+                  <path d="M -5,0 L 5,0 M 0,-5 L 0,5" stroke="#FFFFFF" stroke-width="2" />
+                  <text x="20" y="4" fill="#94A3B8" font-size="9" font-weight="800">SW-IGW</text>
+                </g>
+
+                <!-- ===================================== -->
+                <!-- AVAILABILITY ZONE 1 (ap-south-2a) -->
+                <!-- ===================================== -->
+                <rect x="50" y="100" width="420" height="360" rx="10" fill="#141a29" fill-opacity="0.8" stroke="#334155" stroke-width="1" stroke-dasharray="3" />
+                <text x="65" y="120" fill="#64748B" font-size="10" font-weight="800">AZ1 (ap-south-2a)</text>
+
+                <!-- AZ1 Public Subnet -->
+                <rect id="subnet-az1-public" x="65" y="135" width="390" height="140" rx="8" fill="#041D15" stroke="#10B981" stroke-width="1" />
+                <text x="75" y="152" fill="#34D399" font-size="9" font-weight="800">AZ1_2A_Public_SUB (10.0.1.0/27)</text>
+
+                <!-- AZ1 Private Subnet -->
+                <rect id="subnet-az1-private" x="65" y="295" width="390" height="150" rx="8" fill="#0d1527" stroke="#3B82F6" stroke-width="1" />
+                <text x="75" y="312" fill="#60A5FA" font-size="9" font-weight="800">AZ1_2A_Private_SUB (10.0.2.0/27)</text>
+
+
+                <!-- ===================================== -->
+                <!-- AVAILABILITY ZONE 3 (ap-south-2c) -->
+                <!-- ===================================== -->
+                <rect x="530" y="100" width="420" height="360" rx="10" fill="#141a29" fill-opacity="0.8" stroke="#334155" stroke-width="1" stroke-dasharray="3" />
+                <text x="545" y="120" fill="#64748B" font-size="10" font-weight="800">AZ3 (ap-south-2c)</text>
+
+                <!-- AZ3 Public Subnet -->
+                <rect id="subnet-az3-public" x="545" y="135" width="390" height="140" rx="8" fill="#041D15" stroke="#10B981" stroke-width="1" />
+                <text x="555" y="152" fill="#34D399" font-size="9" font-weight="800">AZ3_2C_Public_SUB (10.0.3.0/27)</text>
+
+                <!-- AZ3 Private Subnet -->
+                <rect id="subnet-az3-private" x="545" y="295" width="390" height="150" rx="8" fill="#0d1527" stroke="#3B82F6" stroke-width="1" />
+                <text x="555" y="312" fill="#60A5FA" font-size="9" font-weight="800">AZ3_2C_Private_SUB (10.0.4.0/27)</text>
+ <!-- ===================================== -->
+                <!-- COMPUTING NODES & SYSTEMS -->
+                <!-- ===================================== -->
+
+                <!-- BASTION HOST (Jump Host) -->
+                <g id="node-bastion" filter="url(#nodeShadow)" class="transition-all duration-300 transform">
+                  <rect x="80" y="170" width="130" height="85" rx="6" fill="#1E293B" stroke="#3B82F6" stroke-width="1.5" />
+                  <rect x="80" y="170" width="130" height="5" rx="2" fill="#3B82F6" />
+                  <circle cx="98" cy="192" r="6" fill="#1E40AF" />
+                  <text x="112" y="195" fill="#FFFFFF" font-size="9" font-weight="800">BASTION JUMP</text>
+                  <text x="96" y="218" fill="#94A3B8" font-size="8">t3.micro | Public</text>
+                  <text x="96" y="238" fill="#34D399" font-size="8" font-weight="800" font-family="monospace">10.0.1.10</text>
+                  <circle cx="196" cy="184" r="3" fill="#34D399" />
+                </g>
+
+                <!-- DC01 DOMAIN CONTROLLER -->
+                <g id="node-dc01" filter="url(#nodeShadow)" class="transition-all duration-300 transform">
+                  <rect x="80" y="335" width="160" height="90" rx="6" fill="#1E293B" stroke="#3B82F6" stroke-width="1.5" />
+                  <rect x="80" y="335" width="160" height="5" rx="2" fill="#3B82F6" />
+                  <circle cx="100" cy="358" r="6" fill="#1E40AF" />
+                  <text x="114" y="361" fill="#FFFFFF" font-size="10" font-weight="800">DC01 ACTIVE DIR</text>
+                  <text x="96" y="385" fill="#94A3B8" font-size="8">t3.medium | Domain Core</text>
+                  <text x="96" y="405" fill="#34D399" font-size="8.5" font-weight="800" font-family="monospace">10.0.2.18</text>
+                  <circle cx="226" cy="349" r="3" fill="#3B82F6" />
+                </g>
+
+                <!-- SQL-01 Primary DB -->
+                <g id="node-sql1" filter="url(#nodeShadow)" class="opacity-25 transition-all duration-300 transform">
+                  <rect x="270" y="335" width="160" height="90" rx="6" fill="#1E293B" stroke="#3B82F6" stroke-width="1.5" />
+                  <rect x="270" y="335" width="160" height="5" rx="2" fill="#3B82F6" />
+                  <circle cx="290" cy="358" r="6" fill="#1E40AF" />
+                  <text x="304" y="361" fill="#FFFFFF" font-size="10" font-weight="800">SW-SQL-01 (Primary)</text>
+                  <text x="286" y="385" fill="#94A3B8" font-size="8">t3.medium | Active DB</text>
+                  <text x="286" y="405" fill="#34D399" font-size="8.5" font-weight="800" font-family="monospace">10.0.2.20</text>
+                  <circle cx="416" cy="349" r="3" fill="#3B82F6" />
+                </g>
+
+                <!-- SQL-02 Secondary DB -->
+                <g id="node-sql2" filter="url(#nodeShadow)" class="opacity-25 transition-all duration-300 transform">
+                  <rect x="650" y="335" width="160" height="90" rx="6" fill="#1E293B" stroke="#3B82F6" stroke-width="1.5" />
+                  <rect x="650" y="335" width="160" height="5" rx="2" fill="#3B82F6" />
+                  <circle cx="670" cy="358" r="6" fill="#1E40AF" />
+                  <text x="684" y="361" fill="#FFFFFF" font-size="10" font-weight="800">SW-SQL-02 (Standby)</text>
+                  <text x="666" y="385" fill="#94A3B8" font-size="8">AlwaysOn Replication</text>
+                  <text x="666" y="405" fill="#34D399" font-size="8.5" font-weight="800" font-family="monospace">10.0.4.20</text>
+                  <circle cx="796" cy="349" r="3" fill="#3B82F6" />
+                </g>
+
+                <!-- MPE-01 Primary App -->
+                <g id="node-mpe1" filter="url(#nodeShadow)" class="opacity-25 transition-all duration-300 transform">
+                  <rect x="250" y="170" width="180" height="85" rx="6" fill="#1E293B" stroke="#3B82F6" stroke-width="1.5" />
+                  <rect x="250" y="170" width="180" height="5" rx="2" fill="#3B82F6" />
+                  <circle cx="268" cy="192" r="6" fill="#1E40AF" />
+                  <text x="282" y="195" fill="#FFFFFF" font-size="10" font-weight="800">SW-MPE-01 (Primary)</text>
+                  <text x="266" y="218" fill="#94A3B8" font-size="8">t3.xlarge | On-Demand</text>
+                  <text x="266" y="238" fill="#34D399" font-size="8.5" font-weight="800" font-family="monospace">10.0.1.20 (Public EIP)</text>
+                </g>
+
+                <!-- MPE-02 Standby App (Persistent Spot) -->
+                <g id="node-mpe2" filter="url(#nodeShadow)" class="opacity-25 transition-all duration-300 transform">
+                  <rect x="640" y="170" width="180" height="85" rx="6" fill="#1E293B" stroke="#10B981" stroke-width="1.5" />
+                  <rect x="640" y="170" width="180" height="5" rx="2" fill="#10B981" />
+                  <circle cx="658" cy="192" r="6" fill="#047857" />
+                  <text x="672" y="195" fill="#FFFFFF" font-size="10" font-weight="800">SW-MPE-02 (Standby)</text>
+                  <text x="656" y="218" fill="#94A3B8" font-size="8">t3.xlarge | Persistent Spot</text>
+                  <text x="656" y="238" fill="#10B981" font-size="8.5" font-weight="800" font-family="monospace">10.0.3.20 (Public EIP)</text>
+                </g>
+
+                <!-- ===================================== -->
+                <!-- INTER-SERVER CONNECTIONS & ROUTING -->
+                <!-- ===================================== -->
+
+                <!-- Inbound RDP Tunnel Line -->
+                <path id="path-rdp" d="M 20,212 L 80,212" stroke="#F59E0B" stroke-width="2" class="connection-pulse" stroke-dasharray="6" fill="none" />
+                
+                <!-- Internal Jump host routing tunnels -->
+                <path id="path-jump-dc" d="M 145,255 L 145,335" stroke="#94A3B8" stroke-width="1.5" stroke-dasharray="4" fill="none" />
+                <path id="path-jump-sql" d="M 145,255 L 200,280 L 270,335" stroke="#94A3B8" stroke-width="1.5" stroke-dasharray="4" fill="none" class="opacity-25" />
+
+                <!-- SQL AlwaysOn Mirroring Sync (Port 5022) -->
+                <path id="path-sql-sync" d="M 430,380 L 650,380" stroke="#3B82F6" stroke-width="2.5" stroke-dasharray="6" fill="none" class="opacity-25" />
+
+                <!-- SolarWinds Failover Engine HA connection -->
+                <path id="path-mpe-ha" d="M 430,212 L 640,212" stroke="#10B981" stroke-width="2" stroke-dasharray="6" fill="none" class="opacity-25" />
+
+              </svg>
+            </div>
+          </div>
+
+          <!-- Description and details card for highlighted active element -->
+          <div class="mt-4 p-4 rounded-2xl bg-slate-900/60 border border-slate-800 flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
+            <div>
+              <h3 id="panel-step-label" class="text-xs font-extrabold text-indigo-400 font-mono uppercase">PHASE 1 ACTIVE BOUNDARY</h3>
+              <p id="panel-step-desc" class="text-xs text-slate-300 mt-1 max-w-xl">
+                The secure administration core. WAN administrative requests target our standalone Jump Host (10.0.1.10) in public Subnet 1, proxying remote connection tunnels safely to your private Domain Controller node.
+              </p>
+            </div>
+            <div class="text-xs font-mono font-bold text-slate-400 bg-slate-950 px-3 py-1.5 rounded-lg border border-slate-800">
+              State: <span id="panel-step-state" class="text-emerald-400">Deployed & Verified</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- CODE VAULT MODULE: SELECTIVE FILE VIEWER -->
+        <div class="glass-panel rounded-3xl border border-slate-800 p-6 shadow-2xl">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+            <div>
+              <h2 class="text-base font-bold text-white flex items-center gap-2">
+                <svg class="w-5 h-5 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                The Active Code Vault
+              </h2>
+              <p class="text-xs text-slate-400 mt-1">Direct access to clean, copy-pasteable configuration modules matching your live folder structure.</p>
+            </div>
+
+            <!-- FILE NAVIGATION TABS -->
+            <div class="flex flex-wrap gap-1.5 bg-slate-950/80 p-1 rounded-xl border border-slate-800">
+              <button onclick="setCodeTab('variables')" id="tab-variables" class="px-2.5 py-1.5 rounded-lg text-xs font-bold font-mono transition-all bg-indigo-600 text-white">
+                variables.tf
+              </button>
+              <button onclick="setCodeTab('network')" id="tab-network" class="px-2.5 py-1.5 rounded-lg text-xs font-bold font-mono transition-all text-slate-400 hover:text-white">
+                network.tf
+              </button>
+              <button onclick="setCodeTab('dc01')" id="tab-dc01" class="px-2.5 py-1.5 rounded-lg text-xs font-bold font-mono transition-all text-slate-400 hover:text-white">
+                dc01.tf
+              </button>
+              <button onclick="setCodeTab('sql')" id="tab-sql" class="px-2.5 py-1.5 rounded-lg text-xs font-bold font-mono transition-all text-slate-400 hover:text-white">
+                sql.tf
+              </button>
+              <button onclick="setCodeTab('mpe1')" id="tab-mpe1" class="px-2.5 py-1.5 rounded-lg text-xs font-bold font-mono transition-all text-slate-400 hover:text-white">
+                mpe1.tf
+              </button>
+              <button onclick="setCodeTab('mpe2')" id="tab-mpe2" class="px-2.5 py-1.5 rounded-lg text-xs font-bold font-mono transition-all text-slate-400 hover:text-white">
+                mpe-02.tf
+              </button>
+            </div>
+          </div>
+
+          <!-- Code Window -->
+          <div class="relative bg-slate-950 rounded-2xl border border-slate-800 overflow-hidden">
+            <div class="flex items-center justify-between px-5 py-3 border-b border-slate-900 bg-slate-950/50">
+              <span id="code-file-path" class="text-xs font-mono text-slate-500">D:\OneDrive - Intertec Systems LLC\Desktop\solarwinds-lab\variables.tf</span>
+              <button onclick="copyCurrentCode()" class="bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 font-bold px-3 py-1.5 rounded-lg text-xs flex items-center gap-1.5 transition-all">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg>
+                Copy Code
+              </button>
+            </div>
+            
+            <pre class="p-5 overflow-auto max-h-[350px] text-xs font-mono leading-relaxed text-slate-300 bg-slate-950/90"><code id="code-viewer"></code></pre>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Non-Intrusive Toast System -->
+  <div id="toast" class="fixed bottom-5 right-5 bg-emerald-600 text-white text-xs font-bold px-4 py-3 rounded-xl shadow-2xl border border-emerald-500 translate-y-20 opacity-0 transition-all duration-300 pointer-events-none flex items-center gap-2">
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+    <span id="toast-message">Configuration code copied successfully!</span>
+  </div>
+
+  <script>
+    const codeDatabase = {
+      variables: `variable "aws_region" {
+  type        = string
+  default     = "ap-south-2"
+  description = "AWS Region (Hyderabad)"
+}
+
+variable "key_name" {
+  type        = string
+  default     = "AZ1_DC"
+  description = "The exact name of your AWS Key Pair used for RDP decryption"
+}
+
+variable "dc_ami_id" {
+  type        = string
+  default     = "ami-0ab890b144649303d"
+  description = "Your custom pre-baked Active Directory Domain Controller AMI ID"
+}
+
+variable "bastion_ami_id" {
+  type        = string
+  default     = "ami-0f214074aa442fb9e"
+  description = "Legacy reference name for Windows Server 2022 Base AMI"
+}
+
+variable "windows_2022_ami_id" {
+  type        = string
+  default     = "ami-0f214074aa442fb9e"
+  description = "Official Windows Server 2022 Base Operating System AMI"
+}`,
+      network: `# Main Lab VPC Core
+resource "aws_vpc" "lab_vpc" {
+  cidr_block           = "10.0.0.0/16"
+  enable_dns_hostnames = true
+  enable_dns_support   = true
+
+  tags = {
+    Name = "C-VPC For SW HA LAB"
+  }
+}
+
+# Internet Access Gateway
+resource "aws_internet_gateway" "igw" {
+  vpc_id = aws_vpc.lab_vpc.id
+
+  tags = {
+    Name = "SW-IGW"
+  }
+}
+
+# AZ1 Public Network segment (Bastion)
+resource "aws_subnet" "az1_public" {
+  vpc_id                  = aws_vpc.lab_vpc.id
+  cidr_block              = "10.0.1.0/27"
+  availability_zone       = "ap-south-2a"
+  map_public_ip_on_launch = true
+
+  tags = {
+    Name = "AZ1_2A_Public_SUB"
+  }
+}
+
+# AZ1 Private Network segment (DC01 & SQL Server Primary)
+resource "aws_subnet" "az1_private" {
+  vpc_id            = aws_vpc.lab_vpc.id
+  cidr_block        = "10.0.2.0/27"
+  availability_zone = "ap-south-2a"
+
+  tags = {
+    Name = "AZ1_2A_Private_SUB"
+  }
+}
+
+# AZ3 Public Network segment (Failover App Nodes)
+resource "aws_subnet" "az3_public" {
+  vpc_id                  = aws_vpc.lab_vpc.id
+  cidr_block              = "10.0.3.0/27"
+  availability_zone       = "ap-south-2c"
+  map_public_ip_on_launch = true
+
+  tags = {
+    Name = "AZ3_2C_Public_SUB"
+  }
+}
+
+# AZ3 Private Network segment (SQL Server Secondary DB)
+resource "aws_subnet" "az3_private" {
+  vpc_id            = aws_vpc.lab_vpc.id
+  cidr_block        = "10.0.4.0/27"
+  availability_zone = "ap-south-2c"
+
+  tags = {
+    Name = "AZ3_2C_Private_SUB"
+  }
+}
+
+# Route Routing Maps for Public Networks
+resource "aws_route_table" "public_rt" {
+  vpc_id = aws_vpc.lab_vpc.id
+
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = aws_internet_gateway.igw.id
+  }
+
+  tags = {
+    Name = "SW-Public-RT"
+  }
+}
+
+# Connect Route Maps to Public Subnets
+resource "aws_route_table_association" "pub_az1" {
+  subnet_id      = aws_subnet.az1_public.id
+  route_table_id = aws_route_table.public_rt.id
+}
+
+resource "aws_route_table_association" "pub_az3" {
+  subnet_id      = aws_subnet.az3_public.id
+  route_table_id = aws_route_table.public_rt.id
+}
+
+# Core Security Group / Central Firewall
+resource "aws_security_group" "lab_sg" {
+  name        = "solarwinds_lab_sg"
+  description = "VPC Internal Routing Gateway & WAN Inbound filter"
+  vpc_id      = aws_vpc.lab_vpc.id
+
+  # Enable outside RDP connections ONLY to the Public Bastion Subnet
+  ingress {
+    from_port   = 3389
+    to_port     = 3389
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  # Intranet Inter-communications (Full mesh inside VPC)
+  ingress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["10.0.0.0/16"]
+  }
+
+  # Outbound Rule
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags = {
+    Name = "SW-Lab-SG"
+  }
+}`,
+      dc01: `resource "aws_instance" "dc_01" {
+  ami                    = var.dc_ami_id
+  instance_type          = "t3.medium" # Upgraded to provide 4GB RAM to prevent LDAP hangs
+  subnet_id              = aws_subnet.az1_private.id
+  private_ip             = "10.0.2.18" # Must be static for active DNS targeting
+  vpc_security_group_ids = [aws_security_group.lab_sg.id]
+  key_name               = var.key_name
+
+  tags = {
+    Name = "AZ1_Private_DC01"
+  }
+}`,
+      sql: `# SQL-01 Primary DB Instance (AZ1 - Private Subnet 1)
+resource "aws_instance" "sql_01" {
+  ami                    = var.bastion_ami_id
+  instance_type          = "t3.medium"
+  subnet_id              = aws_subnet.az1_private.id
+  private_ip             = "10.0.2.20"
+  vpc_security_group_ids = [aws_security_group.lab_sg.id]
+  key_name               = var.key_name
+
+  root_block_device {
+    volume_size           = 50
+    volume_type           = "gp3"
+    delete_on_termination = true
+    encrypted             = true
+  }
+
+  tags = {
+    Name = "SW-SQL-01"
+  }
+}
+
+# SQL-02 Secondary DB Instance (AZ3 - Private Subnet 2)
+resource "aws_instance" "sql_02" {
+  ami                    = var.bastion_ami_id
+  instance_type          = "t3.medium"
+  subnet_id              = aws_subnet.az3_private.id
+  private_ip             = "10.0.4.20"
+  vpc_security_group_ids = [aws_security_group.lab_sg.id]
+  key_name               = var.key_name
+
+  root_block_device {
+    volume_size           = 50
+    volume_type           = "gp3"
+    delete_on_termination = true
+    encrypted             = true
+  }
+
+  tags = {
+    Name = "SW-SQL-02"
+  }
+}`,
+      mpe1: `resource "aws_instance" "mpe_1" {
+  ami                         = var.windows_2022_ami_id # Clean Windows Server 2022 Base OS
+  instance_type               = "t3.xlarge"             # Scaled to prevent memory exhaustion
+  subnet_id                   = aws_subnet.az1_public.id
+  private_ip                  = "10.0.1.20"             # Static internal IP mapping
+  vpc_security_group_ids      = [aws_security_group.lab_sg.id]
+  key_name                    = var.key_name
+  associate_public_ip_address = true                    # Vital for public mapping
+
+  root_block_device {
+    volume_size           = 60
+    volume_type           = "gp3"
+    delete_on_termination = true
+  }
+
+  tags = {
+    Name = "SW-MPE-01"
+  }
+}
+
+resource "aws_eip" "mpe_1_eip" {
+  domain   = "vpc"
+  instance = aws_instance.mpe_1.id
+
+  tags = {
+    Name = "SW-MPE-01-EIP"
+  }
+}`,
+      mpe2: `resource "aws_spot_instance_request" "mpe_2" {
+  ami                            = "ami-04774e3d006a22c2d" # Custom pre-baked standby AMI
+  instance_type                  = "t3.xlarge"             # Cost-optimized matching compute performance
+  spot_price                     = "0.15"                  # Secure bid threshold
+  spot_type                      = "persistent"
+  instance_interruption_behavior = "stop"                  # Auto-stop on termination warnings
+  wait_for_fulfillment           = true
+
+  subnet_id                   = aws_subnet.az3_public.id
+  private_ip                  = "10.0.3.20"             # Static IP for target active directory pairing
+  vpc_security_group_ids      = [aws_security_group.lab_sg.id]
+  key_name                    = var.key_name
+  associate_public_ip_address = true
+
+  root_block_device {
+    volume_size           = 60
+    volume_type           = "gp3"
+    delete_on_termination = true
+  }
+
+  tags = {
+    Name = "SW-MPE-02"
+  }
+}
+
+resource "aws_eip" "mpe_2_eip" {
+  domain   = "vpc"
+  instance = aws_spot_instance_request.mpe_2.spot_instance_id # Dynamically maps to spot-fulfilled node
+
+  tags = {
+    Name = "SW-MPE-02-EIP"
+  }
+}`
+    };
+
+    let activeTab = 'variables';
+
+    function setCodeTab(tabName) {
+      const tabs = ['variables', 'network', 'dc01', 'sql', 'mpe1', 'mpe2'];
+      tabs.forEach(t => {
+        const btn = document.getElementById('tab-' + t);
+        if (t === tabName) {
+          btn.className = "px-2.5 py-1.5 rounded-lg text-xs font-bold font-mono transition-all bg-indigo-600 text-white";
+        } else {
+          btn.className = "px-2.5 py-1.5 rounded-lg text-xs font-bold font-mono transition-all text-slate-400 hover:text-white";
+        }
+      });
+
+      const actualFileName = tabName === 'mpe2' ? 'mpe-02.tf' : `${tabName}.tf`;
+      document.getElementById('code-file-path').innerText = `D:\\OneDrive - Intertec Systems LLC\\Desktop\\solarwinds-lab\\${actualFileName}`;
+      document.getElementById('code-viewer').innerText = codeDatabase[tabName];
+      activeTab = tabName;
+    }
+
+    function setPhase(phaseNum) {
+      const phases = [1, 2, 3];
+      phases.forEach(p => {
+        const btn = document.getElementById('btn-phase-' + p);
+        if (p === phaseNum) {
+          btn.className = "w-full text-left p-4 rounded-xl border transition-all flex justify-between items-center bg-emerald-600/15 border-emerald-500/50 text-white";
+        } else {
+          btn.className = "w-full text-left p-4 rounded-xl border transition-all flex justify-between items-center bg-slate-900/40 border-slate-800 text-slate-400 hover:border-slate-700";
+        }
+      });
+
+      const indicator = document.getElementById('active-phase-indicator');
+      const title = document.getElementById('active-phase-title');
+      const stepLabel = document.getElementById('panel-step-label');
+      const stepDesc = document.getElementById('panel-step-desc');
+      const stepState = document.getElementById('panel-step-state');
+      const activeNodesBadge = document.getElementById('header-active-nodes');
+
+      // SVG Elements references
+      const sql1 = document.getElementById('node-sql1');
+      const sql2 = document.getElementById('node-sql2');
+      const mpe1 = document.getElementById('node-mpe1');
+      const mpe2 = document.getElementById('node-mpe2');
+
+      const pathSqlSync = document.getElementById('path-sql-sync');
+      const pathMpeHa = document.getElementById('path-mpe-ha');
+      const pathJumpSql = document.getElementById('path-jump-sql');
+
+      if (phaseNum === 1) {
+        indicator.className = "w-2.5 h-2.5 rounded-full bg-indigo-500";
+        title.innerText = "Phase 1: Foundational Directory Tier";
+        stepLabel.innerText = "PHASE 1 ACTIVE BOUNDARY";
+        stepLabel.className = "text-xs font-extrabold text-indigo-400 font-mono uppercase";
+        stepDesc.innerText = "The secure management base. External admin RDP requests target only the isolated Bastion Host in Public Subnet 1, proxying access down to your core AD Domain Controller (10.0.2.18) safely.";
+        stepState.innerText = "Active & Running";
+        stepState.className = "text-emerald-400";
+        activeNodesBadge.innerText = "2 / 6 Live";
+
+        sql1.style.opacity = '0.2';
+        sql2.style.opacity = '0.2';
+        mpe1.style.opacity = '0.2';
+        mpe2.style.opacity = '0.2';
+
+        pathSqlSync.style.opacity = '0.2';
+        pathMpeHa.style.opacity = '0.2';
+        pathJumpSql.style.opacity = '0.2';
+
+      } else if (phaseNum === 2) {
+        indicator.className = "w-2.5 h-2.5 rounded-full bg-amber-500";
+        title.innerText = "Phase 2: Clustered Database Tier (MSSQL AlwaysOn)";
+        stepLabel.innerText = "PHASE 2 - DATABASE ARCHITECTURE";
+        stepLabel.className = "text-xs font-extrabold text-amber-400 font-mono uppercase";
+        stepDesc.innerText = "High-availability database framework. Deploys two clustered t3.medium SQL nodes synchronously replicating active transactions and log sectors across subnets over internal Port 5022.";
+        stepState.innerText = "Active & Synchronized";
+        stepState.className = "text-emerald-400";
+        activeNodesBadge.innerText = "4 / 6 Live";
+
+        sql1.style.opacity = '1';
+        sql2.style.opacity = '1';
+        mpe1.style.opacity = '0.2';
+        mpe2.style.opacity = '0.2';
+
+        pathSqlSync.style.opacity = '1';
+        pathMpeHa.style.opacity = '0.2';
+        pathJumpSql.style.opacity = '1';
+
+      } else if (phaseNum === 3) {
+        indicator.className = "w-2.5 h-2.5 rounded-full bg-emerald-500";
+        title.innerText = "Phase 3: Cost-Optimized Decoupled Polling Cluster";
+        stepLabel.innerText = "PHASE 3 - MAIN APPLICATION LAYER";
+        stepLabel.className = "text-xs font-extrabold text-emerald-400 font-mono uppercase";
+        stepDesc.innerText = "Highly resilient platform deployment. Pairs the On-Demand Primary node (SW-MPE-01) in AZ1 with an identical standby replica (SW-MPE-02) as a persistent Spot instance in AZ3 for zero-downtime application failovers.";
+        stepState.innerText = "Active & Configured";
+        stepState.className = "text-emerald-400";
+        activeNodesBadge.innerText = "6 / 6 Live";
+
+        sql1.style.opacity = '1';
+        sql2.style.opacity = '1';
+        mpe1.style.opacity = '1';
+        mpe2.style.opacity = '1';
+
+        pathSqlSync.style.opacity = '1';
+        pathMpeHa.style.opacity = '1';
+        pathJumpSql.style.opacity = '1';
+      }
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      const msg = document.getElementById('toast-message');
+      msg.innerText = message;
+      toast.className = "fixed bottom-5 right-5 bg-emerald-600 text-white text-xs font-bold px-4 py-3 rounded-xl shadow-2xl border border-emerald-500 translate-y-0 opacity-100 transition-all duration-300 pointer-events-auto";
+      
+      setTimeout(() => {
+        toast.className = "fixed bottom-5 right-5 bg-emerald-600 text-white text-xs font-bold px-4 py-3 rounded-xl shadow-2xl border border-emerald-500 translate-y-20 opacity-0 transition-all duration-300 pointer-events-none";
+      }, 3000);
+    }
+
+    function copyCurrentCode() {
+      const codeBlock = codeDatabase[activeTab];
+      const tempElement = document.createElement('textarea');
+      tempElement.value = codeBlock;
+      document.body.appendChild(tempElement);
+      tempElement.select();
+      
+      try {
+        document.execCommand('copy');
+        showToast(`Copied the code of "${activeTab === 'mpe2' ? 'mpe-02.tf' : activeTab + '.tf'}" to clipboard!`);
+      } catch (err) {
+        showToast("Error copying code. Please select and copy manually.");
+      }
+      
+      document.body.removeChild(tempElement);
+    }
+
+    window.onload = function() {
+      setCodeTab('variables');
+      setPhase(3); // Start with live state showing 6/6 instances
+    }
+  </script>
+</body>
+</html>
